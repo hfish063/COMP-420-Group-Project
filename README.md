@@ -20,6 +20,12 @@ git clone https://github.com/hfish063/COMP-420-Group-Project.git
 git branch feature/<NAME OF FEATURE>
 ```
 
+(and check it out)
+
+```
+git checkout feature/<NAME OF FEATURE>
+```
+
 This should correspond to the current task you're working on.
 
 3. When you're finished working on your feature, push it to the remote repository
@@ -27,6 +33,8 @@ This should correspond to the current task you're working on.
 ```
 git push origin feature/<NAME OF FEATURE>
 ```
+
+**Tip**: it's helpful to run `git status` frequently, to double check what branch you're currently working on and verify changes.
 
 ### Precautions
 
