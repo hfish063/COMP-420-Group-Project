@@ -27,12 +27,13 @@ CREATE TABLE IF NOT EXISTS categories (
 CREATE TABLE IF NOT EXISTS products (
     product_id INT PRIMARY KEY,
 
-    name VARCHAR(255) INDEX NOT NULL,
+    name VARCHAR(255) NOT NULL,
     price DECIMAL(10,2) NOT NULL,
-    product_type VARCHAR(12) NOT NULL,
 
     category_id INT NOT NULL,
     brand_id INT NOT NULL,
+    
+    INDEX(name),
 
     FOREIGN KEY (category_id)
         REFERENCES categories(category_id)
