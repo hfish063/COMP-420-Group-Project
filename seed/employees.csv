@@ -1,0 +1,9 @@
+employee_id,f_name,l_name,email,address,department,hire_date,store_id
+1,Robert,Taylor,rtaylor@techstore.com,10 Work St Los Angeles CA,Sales,2022-01-15 09:00:00,1
+2,Lisa,Anderson,landerson@techstore.com,20 Office Ave Los Angeles CA,Repair,2021-03-20 09:00:00,1
+3,James,Thomas,jthomas@techstore.com,30 Corp Blvd Los Angeles CA,Management,2020-06-01 09:00:00,2
+4,Maria,Jackson,mjackson@techstore.com,40 Business Rd Los Angeles CA,Sales,2023-02-10 09:00:00,2
+5,William,White,wwhite@techstore.com,50 Commerce St Atlanta GA,Repair,2021-08-15 09:00:00,3
+6,Jennifer,Harris,jharris@techstore.com,60 Market Ave Atlanta GA,Sales,2022-11-01 09:00:00,3
+7,Charles,Martin,cmartin@techstore.com,70 Trade Blvd Chicago IL,Management,2020-04-15 09:00:00,4
+8,Patricia,Garcia,pgarcia@techstore.com,80 Industry Rd Chicago IL,Repair,2023-07-20 09:00:00,4

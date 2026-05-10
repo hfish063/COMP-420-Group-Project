@@ -1,0 +1,5 @@
+store_id,name,address,warehouse_id
+1,Downtown Tech,123 Main St Los Angeles CA,1
+2,Westside Electronics,456 Sunset Blvd Los Angeles CA,1
+3,Atlanta Tech Hub,789 Peachtree St Atlanta GA,2
+4,Chicago Tech Center,321 Michigan Ave Chicago IL,3

@@ -1,0 +1,4 @@
+warehouse_id,name,address,vendor_id
+1,Main Warehouse,100 Industrial Blvd Los Angeles CA,1
+2,East Coast Hub,200 Commerce Dr Atlanta GA,2
+3,Midwest Center,300 Storage Ln Chicago IL,3

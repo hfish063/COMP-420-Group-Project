@@ -1,0 +1,16 @@
+order_item_id,order_item_type,job_id,order_id,product_id
+1,product,,1,1
+2,product,,1,7
+3,job,1,1,
+4,product,,2,3
+5,product,,3,2
+6,job,2,4,
+7,product,,4,8
+8,product,,5,5
+9,job,3,5,
+10,product,,7,4
+11,job,4,7,
+12,job,5,8,
+13,product,,9,6
+14,job,6,9,
+15,product,,10,10
