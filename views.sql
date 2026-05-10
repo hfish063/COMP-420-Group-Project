@@ -22,19 +22,19 @@ LEFT JOIN job_details jd
 -- Usage: SELECT * FROM product_inventory_view WHERE store_id = ...
 CREATE VIEW product_inventory_view AS
 SELECT 
-    p.name,
+    p.name AS product_name,
     p.price,
-    c.name,
-    b.name,
+    c.name AS category_name,
+    b.name AS brand_name,
     i.inventory_id,
     i.quantity
 FROM inventory i
 JOIN products p 
-    ON i.id = p.id
+    ON i.inventory_id = p.product_id
 JOIN categories c 
-    ON p.id = c.id
+    ON p.product_id = c.category_id
 JOIN brands b 
-    ON p.id = b.id;
+    ON p.product_id = b.brand_id; 
 
 -- View for a repair job
 CREATE VIEW repair_job_view AS
