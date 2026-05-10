@@ -2,6 +2,13 @@
 
 By: Hayden Fish, David Smith, Julian Ortiz, Atrin Molanorouzi
 
+## About
+
+### Table Structure
+The structure of our tables is slightly complex, in order to account for the repair and product tables.  Our database represents a chain of in-person computer stores, with repair services.
+
+When an order is generated, it consists of a sequence of lines (order_items), which are associated with either products or jobs (repairs) depending on the `order_item_type` field.  For example, if we have a `product` type, then the job field would be **NULL**, and the product field would point towards that product.  The reverse is true in the case that we have a `job` type.
+
 ## Contributions Guide
 
 ### Using Git
