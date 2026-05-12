@@ -94,3 +94,51 @@ BEGIN
 END$$
 
 DELIMITER ;
+
+-- Create repair job
+DELIMITER &&
+
+CREATE PROCEDURE create_repair_job(
+	IN p_job_id INT,
+	IN p_assigned_emp_id INT,
+	IN p_client_id INT,
+	IN p_price DECIMAL(10,2),
+	IN p_ongoing BOOL,
+	IN p_start_date DATE,
+	IN p_completion_date DATE,
+	IN p_job_details_id INT, 
+	IN p_description TEXT,
+	IN p_repair_type VARCHAR(100)
+)
+BEGIN
+	INSERT INTO jobs (
+		job_id,
+		assigned_employee_id,
+		client_id,
+		price, 
+		ongoing, 
+		start_date, 
+		completion_date 
+	) VALUES (
+		p_job_id, 
+		p_assigned_emp_id, 
+		p_client_id, 
+		p_price, 
+		p_ongoing, 
+		p_start_date, 
+		p_completion_date
+	);
+	
+	INSERT INTO job_details (
+		job_details_id, 
+		description, 
+		repair_type, 
+		job_id
+	) VALUES (
+		p_job_details_id,
+		p_description,
+		p_repair_type,
+		p_job_id
+	);
+END &&
+DELIMITER ;
