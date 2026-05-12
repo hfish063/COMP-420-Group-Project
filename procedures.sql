@@ -142,3 +142,20 @@ BEGIN
 	);
 END &&
 DELIMITER ;
+
+-- Complete repair job
+DELIMITER &&
+
+CREATE PROCEDURE complete_repair_job(
+	IN p_job_id INT,
+	IN p_completion_date DATE
+)
+BEGIN 
+	UPDATE jobs
+	SET 
+		ongoing = 0,
+		completion_date = p_completion_date
+	WHERE
+		job_id = p_job_id;
+END &&
+DELIMITER ;
