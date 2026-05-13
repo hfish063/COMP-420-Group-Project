@@ -26,15 +26,15 @@ SELECT
     p.price,
     c.name AS category_name,
     b.name AS brand_name,
-    i.inventory_id,
+    i.store_id,
     i.quantity
 FROM inventory i
 JOIN products p 
-    ON i.inventory_id = p.product_id
+    ON i.product_id = p.product_id
 JOIN categories c 
-    ON p.product_id = c.category_id
+    ON p.category_id = c.category_id
 JOIN brands b 
-    ON p.product_id = b.brand_id; 
+    ON p.brand_id = b.brand_id;
 
 -- View for a repair job
 CREATE VIEW repair_job_view AS

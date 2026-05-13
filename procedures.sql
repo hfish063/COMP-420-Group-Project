@@ -1,24 +1,69 @@
 -- Create Order Procedure
 DELIMITER &&
-CREATE PROCEDURE CreateOrder(
-    IN p_client_id INT,
-    IN p_order_date DATE,
-    IN p_total_amount DECIMAL(10,2)
+CREATE PROCEDURE create_order(
+    IN p_store_id INT,
+    IN p_product_id INT,
+    IN p_quantity INT,
+    IN p_order_item_type VARCHAR(50),
+    IN p_status VARCHAR(50),
+    IN p_order_date DATE
 )
 BEGIN
-    INSERT INTO orders(
-        client_id,
-        order_date,
-        total_amount
+    DECLARE v_order_id INT;
+
+    -- Create order
+    INSERT INTO orders (store_id, status, order_date)
+    VALUES (p_store_id, p_status, p_order_date);
+    SET v_order_id = LAST_INSERT_ID();
+
+    -- Link product to order
+    INSERT INTO order_items (
+		order_item_type,
+		order_id,
+        product_id
     )
     VALUES (
-        p_client_id,
-        p_order_date,
-        p_total_amount
+		p_order_item_type,
+        v_order_id,
+        p_product_id
     );
+    
+    -- Link inventory to product
+    UPDATE inventory
+    SET quantity = quantity - p_quantity
+    WHERE store_id = p_store_id
+      AND product_id = p_product_id
+      AND quantity >= p_quantity;
+END &&
+DELIMITER ;
 
-END && 
-DELIMITER ; 
+-- Restock Product
+DELIMITER &&
+CREATE PROCEDURE restock_product(
+    IN p_store_id INT,
+    IN p_product_id INT,
+    IN p_quantity INT
+)
+BEGIN
+    UPDATE inventory
+    SET quantity = quantity + p_quantity
+    WHERE store_id = p_store_id
+      AND product_id = p_product_id;
+END &&
+DELIMITER ;
+
+-- Update Inventory
+DELIMITER &&
+CREATE PROCEDURE update_inventory (
+    IN p_inventory_id INT,
+    IN p_quantity INT
+)
+BEGIN
+    UPDATE inventory
+    SET quantity = p_quantity
+    WHERE inventory_id = p_inventory_id;
+END &&
+DELIMITER ;
 
 -- Restock Product Procedure
 DELIMITER &&
@@ -159,3 +204,143 @@ BEGIN
 		job_id = p_job_id;
 END &&
 DELIMITER ;
+
+delimiter //
+
+-- Add employee procedure
+create procedure add_employee(
+    in p_employee_id int,
+    in p_f_name varchar(32),
+    in p_l_name varchar(32),
+    in p_email varchar(64),
+    in p_address varchar(128),
+    in p_department varchar(32),
+    in p_hire_date date,
+    in p_store_id int
+)
+begin
+
+
+    insert into employees(
+        employee_id,
+        f_name,
+        l_name,
+        email,
+        address,
+        department,
+        hire_date,
+        store_id
+    )
+    values(
+        p_employee_id,
+        p_f_name,
+        p_l_name,
+        p_email,
+        p_address,
+        p_department,
+        p_hire_date,
+        p_store_id
+    );
+
+
+end //
+
+
+delimiter ;
+
+-- Add new product procedure
+delimiter //
+
+create procedure add_product(
+    in p_product_id int,
+    in p_name varchar(64),
+    in p_price decimal(10,2),
+    in p_category_id int,
+    in p_brand_id int
+)
+begin
+
+
+    insert into products(
+        product_id,
+        name,
+        price,
+        category_id,
+        brand_id
+    )
+    values(
+        p_product_id,
+        p_name,
+        p_price,
+        p_category_id,
+        p_brand_id
+    );
+
+
+end //
+
+
+delimiter ;
+
+
+-- Get order info procedure
+delimiter //
+
+
+create procedure get_order_information(
+    in p_order_id int
+)
+begin
+
+
+    select
+        o.order_id,
+        o.order_date,
+        o.status,
+
+
+        s.name as store_name,
+
+
+        oi.order_item_id,
+        oi.order_item_type,
+
+
+        p.name as product_name,
+        p.price,
+
+
+        t.transaction_id,
+        t.total,
+        t.payment_method,
+        t.transaction_date
+
+
+    from orders o
+
+
+    left join stores s
+        on o.store_id = s.store_id
+
+
+    left join order_items oi
+        on o.order_id = oi.order_id
+
+
+    left join products p
+        on oi.product_id = p.product_id
+
+
+    left join transactions t
+        on o.order_id = t.order_id
+
+
+    where o.order_id = p_order_id;
+
+
+end //
+
+
+delimiter ;
+
+

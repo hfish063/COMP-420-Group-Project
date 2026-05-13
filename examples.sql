@@ -1,7 +1,7 @@
 CALL complete_repair_job(
 	7,			 -- id
 	'2026-05-12' -- completion date
-)
+);
 
 SELECT 
 	j.job_id,
