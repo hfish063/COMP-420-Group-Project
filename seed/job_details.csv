@@ -1,0 +1,7 @@
+job_details_id,description,repair_type,job_id
+1,Cracked screen replacement,Screen Repair,1
+2,Battery replacement and diagnostic,Battery Repair,2
+3,Water damage assessment and cleaning,Water Damage,3
+4,Logic board repair and soldering,Logic Board,4
+5,Charging port replacement,Port Repair,5
+6,Software reinstall and data recovery,Software,6

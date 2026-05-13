@@ -1,0 +1,11 @@
+order_id,store_id,status,order_date
+1,1,completed,2025-01-10
+2,2,completed,2025-01-15
+3,1,pending,2025-02-01
+4,3,completed,2025-02-14
+5,4,completed,2025-03-05
+6,2,cancelled,2025-03-20
+7,1,completed,2025-04-02
+8,3,pending,2025-04-18
+9,4,completed,2025-05-01
+10,2,completed,2025-05-07

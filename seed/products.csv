@@ -1,0 +1,11 @@
+product_id,name,price,category_id,brand_id
+1,iPhone 15,999.99,1,1
+2,Galaxy S24,899.99,1,2
+3,MacBook Pro,1999.99,2,1
+4,Dell XPS 15,1499.99,2,4
+5,iPad Pro,1099.99,3,1
+6,Galaxy Tab S9,799.99,3,2
+7,Sony WH-1000XM5,349.99,4,3
+8,LG OLED C3,1299.99,5,5
+9,iPhone 14,699.99,1,1
+10,Dell Inspiron,649.99,2,4
